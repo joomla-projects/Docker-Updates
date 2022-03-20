@@ -6,7 +6,7 @@ ENV GITHUB_CLI_VERSION=2.6.0
 
 RUN echo "=> Running apt-get udpate" && \
     apt-get update && \
-    apt-get install git && \
+    apt-get install git jq -y && \
     echo "=> Install Github CLI" && \
     wget -O github-cli.deb https://github.com/cli/cli/releases/download/v${GITHUB_CLI_VERSION}/gh_${GITHUB_CLI_VERSION}_linux_amd64.deb && \
     dpkg -i github-cli.deb && \
