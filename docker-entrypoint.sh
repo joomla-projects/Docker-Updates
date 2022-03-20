@@ -48,7 +48,7 @@ elif [[ $1 == "release" ]]; then
   /go/bin/tuf commit
   git add .; git commit -m "Release: ${GIT_BRANCH_NAME}"
   git push
-  PR_URL=$(/usr/bin/gh pr create --base main -t "Release: ${GIT_BRANCH_NAME}")
+  PR_URL=$(/usr/bin/gh pr create --base main --title "Release: ${GIT_BRANCH_NAME}")
   /usr/bin/gh pr merge "${PR_URL}"
 else
   /go/bin/tuf "$1"
