@@ -40,6 +40,8 @@ if [[ $1 == "update-timestamp" ]]; then
   echo "=> TUF Updation timestamp"
   /go/bin/tuf timestamp
   /go/bin/tuf commit
+  git commit -am "Update timestamp"
+  git push
 else
   /go/bin/tuf "$1"
 fi
