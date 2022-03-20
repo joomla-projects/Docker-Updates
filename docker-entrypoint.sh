@@ -50,6 +50,13 @@ elif [[ $1 == "release" ]]; then
   git push
   PR_URL=$(/usr/bin/gh pr create --base main --title "Release: ${GIT_BRANCH_NAME}")
   /usr/bin/gh pr merge "${PR_URL}"
+elif [[ $1 == "gen-template" ]]; then
+  sed "s/\$VERSION/${UPDATE_VERSION}/g" /go/updates/templates/update-info-4.json | tee /go/update-info.json
+  cat <<< $(jq '.["description"] = "'"${UPDATE_DESCRIPTION}"'"' /go/update-info.json) > /go/update-info.json
+  cat <<< $(jq '.["infourl"]["url"] = "'"${UPDATE_INFO_URL}"'"' /go/update-info.json) > /go/update-info.json
+  cat <<< $(jq '.["infourl"]["title"] = "'"${UPDATE_INFO_TITLE}"'"' /go/update-info.json) > /go/update-info.json
+  cat <<< $(jq '.["name"] = "'"${UPDATE_NAME}"'"' /go/update-info.json) > /go/update-info.json
+  cat <<< $(jq '.["version"] = "'"${UPDATE_VERSION}"'"' /go/update-info.json) > /go/update-info.json
 else
   /go/bin/tuf "$1"
 fi
