@@ -1,4 +1,4 @@
-# Joom TUF docker
+# Joomla! TUF Docker
 
 ## VARS
 
