@@ -1,8 +1,7 @@
 FROM golang:1.16-bullseye@sha256:35fa3cfd4ec01a520f6986535d8f70a5eeef2d40fb8019ff626da24989bdd4f1
 
 ENV TUF_VERSION=v0.1.0
-ENV ACCESS_TOKEN=None
-ENV GIT_URL=github.com/joomla/updates.git
+ENV GIT_URL=https://github.com/joomla/updates.git
 ENV GITHUB_CLI_VERSION=2.6.0
 
 RUN echo "=> Running apt-get udpate" && \
