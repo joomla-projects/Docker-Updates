@@ -21,6 +21,7 @@ echo "=> Configure git"
 git config --global user.name "${GIT_USER_NAME}"
 git config --global user.email "${GIT_USER_EMAIL}"
 git config --global pull.rebase false;
+git config --global credential.https://github.com.username git
 
 if [[ -d updates/.git ]]; then
   cd updates; \
@@ -57,6 +58,10 @@ elif [[ $1 == "gen-template" ]]; then
   cat <<< $(jq '.["infourl"]["title"] = "'"${UPDATE_INFO_TITLE}"'"' /go/update-info.json) > /go/update-info.json
   cat <<< $(jq '.["name"] = "'"${UPDATE_NAME}"'"' /go/update-info.json) > /go/update-info.json
   cat <<< $(jq '.["version"] = "'"${UPDATE_VERSION}"'"' /go/update-info.json) > /go/update-info.json
+  /go/bin/tuf add --custom="$(jq -c '.' /go/update-info.json)"
+  git add .
+  git commit -m "Prepare ${UPDATE_VERSION}"
+  git push
 else
   /go/bin/tuf "$1"
 fi

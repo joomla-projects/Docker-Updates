@@ -3,6 +3,7 @@ FROM golang:1.16-bullseye@sha256:35fa3cfd4ec01a520f6986535d8f70a5eeef2d40fb8019f
 ENV TUF_VERSION=v0.1.0
 ENV GIT_URL=https://github.com/joomla/updates.git
 ENV GITHUB_CLI_VERSION=2.6.0
+ENV GIT_ASKPASS=/go/git_env_password.sh
 
 RUN echo "=> Running apt-get udpate" && \
     apt-get update && \
@@ -18,6 +19,7 @@ RUN echo "=> Install go-tuf" && \
     go get github.com/theupdateframework/go-tuf/cmd/tuf@$TUF_VERSION
 
 COPY docker-entrypoint.sh /go/docker-entrypoint.sh
+COPY git_env_password.sh /go/git_env_password.sh
 RUN chmod +x /go/docker-entrypoint.sh
 
 ENTRYPOINT ["/go/docker-entrypoint.sh"]
