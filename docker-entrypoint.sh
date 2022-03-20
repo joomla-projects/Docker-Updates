@@ -17,6 +17,10 @@ echo "=> Setup Github CLI"
 #/usr/bin/gh
 /usr/bin/gh auth login --with-token <<< "${ACCESS_TOKEN}"
 
+echo "=> Configure git"
+git config --global user.name "${GIT_USER_NAME}"
+git config --global user.email "${GIT_USER_EMAIL}"
+
 if [[ -d updates/.git ]]; then
   cd updates; \
   git config pull.rebase false; \
