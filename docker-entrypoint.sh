@@ -42,6 +42,14 @@ if [[ $1 == "update-timestamp" ]]; then
   /go/bin/tuf commit
   git commit -am "Update timestamp"
   git push
+elif [[ $1 == "release" ]]; then
+  /go/bin/tuf snapshot
+  /go/bin/tuf timestamp
+  /go/bin/tuf commit
+  git add .; git commit -m "Release: ${GIT_BRANCH_NAME}"
+  git push
+  PR_URL=$(/usr/bin/gh pr create --base main -t "Release: ${GIT_BRANCH_NAME}")
+  /usr/bin/gh pr merge "${PR_URL}"
 else
   /go/bin/tuf "$1"
 fi

@@ -27,15 +27,3 @@ Use `-e` in `docker run` to pass ENV variables.
 docker run -e ACCESS_TOKEN=REDACTED_TOKEN -e GIT_BRANCH_NAME=main joomla-tuf "help"
 usage: tuf [-h|--help] [-d|--dir=<dir>] [--insecure-plaintext] <command> [<args>...]
 ```
-
-## TODO
-
-- Github CLI create MR from sign
-- local volume/folder for joomla packages to singn
-
-- Einen Command für:
-  - sign von timestamp
-  - sign von snapshot + commit
-  
-- command: update-timestamp
-- command: bash
