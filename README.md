@@ -28,9 +28,5 @@ usage: tuf [-h|--help] [-d|--dir=<dir>] [--insecure-plaintext] <command> [<args>
 
 ## TODO
 
-- Github access token, get repo from branch
-  - $ACCESS_TOKEN
-  - $GIR_BRANCH (quasi die version die gesignt wird)
-  - optional parm $GIT_URL
 - Github CLI create MR from sign
 - local volume/folder for joomla packages to sing
