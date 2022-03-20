@@ -20,17 +20,21 @@ echo "=> Setup Github CLI"
 echo "=> Configure git"
 git config --global user.name "${GIT_USER_NAME}"
 git config --global user.email "${GIT_USER_EMAIL}"
+git config --global pull.rebase false;
 
 if [[ -d updates/.git ]]; then
   cd updates; \
-  git config pull.rebase false; \
   git checkout "${GIT_BRANCH_NAME}"; \
   git pull; \
+  git fetch origin/main || true; \
+  git rebase main || true; \
   cd ..
 else
   /usr/bin/gh repo clone "${GIT_URL}"
   cd updates; \
   git checkout "${GIT_BRANCH_NAME}"; \
+  git fetch origin/main || true; \
+  git rebase main || true; \
   cd ..
 fi
 
