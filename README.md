@@ -2,7 +2,7 @@
 
 ## VARS
 
-| ⚠️ REQUIRED ⚠️ | VAR | DEFAULT | COMMENT |
+| ⚠️ REQUIRED | VAR | DEFAULT | COMMENT |
 | -- | ------------------ | -------- | -------------------------------------------------- |
 | ⚠️ | GIT_BRANCH_NAME    |          | The Branch name to checkout in the Container       |
 |    | TUF_VERSION        | `v0.1.0` | The go-tuf version insalled                        |
