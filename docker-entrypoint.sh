@@ -27,15 +27,19 @@ if [[ -d updates/.git ]]; then
   git checkout "${GIT_BRANCH_NAME}"; \
   git pull; \
   git fetch origin/main || true; \
-  git rebase main || true; \
-  cd ..
+  git rebase main || true
 else
   /usr/bin/gh repo clone "${GIT_URL}"
   cd updates; \
   git checkout "${GIT_BRANCH_NAME}"; \
   git fetch origin/main || true; \
-  git rebase main || true; \
-  cd ..
+  git rebase main || true
 fi
 
-/go/bin/tuf "$1"
+if [[ $1 == "update-timestamp" ]]; then
+  echo "=> TUF Updation timestamp"
+  /go/bin/tuf timestamp
+  /go/bin/tuf commit
+else
+  /go/bin/tuf "$1"
+fi
