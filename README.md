@@ -15,18 +15,18 @@
 Build the Image
 
 ```bash
-docker build -t joom-tuf:latest -f Dockerfile .
+docker build -t joomla-tuf:latest -f Dockerfile .
 ```
 
 Run your commands directly against tuf.
 Use `-e` in `docker run` to pass ENV variables.
 
 ```bash
-docker run -e ACCESS_TOKEN=REDACTED_TOKEN -e GIT_BRANCH_NAME=main joom-tuf "help"
+docker run -e ACCESS_TOKEN=REDACTED_TOKEN -e GIT_BRANCH_NAME=main joomla-tuf "help"
 usage: tuf [-h|--help] [-d|--dir=<dir>] [--insecure-plaintext] <command> [<args>...]
 ```
 
 ## TODO
 
 - Github CLI create MR from sign
-- local volume/folder for joomla packages to sing
+- local volume/folder for joomla packages to singn
