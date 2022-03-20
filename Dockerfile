@@ -10,3 +10,9 @@ RUN echo "=> Running apt-get udpate" && \
 
 RUN echo "=> Install go-tuf" && \
     go get github.com/theupdateframework/go-tuf/cmd/tuf@$TUF_VERSION
+
+COPY docker-entrypoint.sh /go/docker-entrypoint.sh
+RUN chmod +x /go/docker-entrypoint.sh
+
+ENTRYPOINT ["/go/docker-entrypoint.sh"]
+CMD ["/go/docker-entrypoint.sh"]
