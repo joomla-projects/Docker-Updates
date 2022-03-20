@@ -3,11 +3,12 @@
 ## VARS
 
 | ⚠️ REQUIRED ⚠️ | VAR | DEFAULT | COMMENT |
-| ⚠️ | GIT_BRANCH_NAME    |          | The Branch name to checkout in the Container |
-|    | TUF_VERSION        | `v0.1.0` | The go-tuf version insalled |
-| ⚠️ | ACCESS_TOKEN       |          | Github Access token with access to the `GIT_RUL` |
+| -- | ------------------ | -------- | -------------------------------------------------- |
+| ⚠️ | GIT_BRANCH_NAME    |          | The Branch name to checkout in the Container       |
+|    | TUF_VERSION        | `v0.1.0` | The go-tuf version insalled                        |
+| ⚠️ | ACCESS_TOKEN       |          | Github Access token with access to the `GIT_RUL`   |
 |    | GIT_URL            | <https://github.com/joomla/updates.git> | The Github Repo URL |
-|    | GITHUB_CLI_VERSION | `2.6.0`  | The Github CLI Version to install |
+|    | GITHUB_CLI_VERSION | `2.6.0`  | The Github CLI Version to install                  |
 
 ## Setup
 
